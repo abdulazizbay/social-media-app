@@ -15,6 +15,8 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepository userRepository;
+
+    @Transactional
     @Override
     public User registerUser(User user) throws UserException {
         Optional<User> isEmailExist = userRepository.findByEmail(user.getEmail());
@@ -55,6 +57,7 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
+
     @Override
     @Transactional
     public String followUser(int reqUserId, int followUserId) throws UserException {
@@ -94,7 +97,7 @@ public class UserServiceImpl implements UserService{
         }
         return users;
     }
-
+    @Transactional
     @Override
     public User updateUserDetails(int id, User updatedUser) throws UserException {
         Optional<User> existingUserOpt = userRepository.findById(id);

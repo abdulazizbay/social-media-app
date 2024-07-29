@@ -18,7 +18,7 @@ public class PostController {
     private PostService postService;
 
     @PostMapping("/create/{userId}")
-    public ResponseEntity<Post> createPost(@RequestBody Post post, @PathVariable Integer userId) {
+    public ResponseEntity<?> createPost(@RequestBody Post post, @PathVariable Integer userId) {
         try {
             Post createdPost = postService.createPost(post, userId);
             return ResponseEntity.ok(createdPost);

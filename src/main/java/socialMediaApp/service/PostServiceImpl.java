@@ -1,5 +1,6 @@
 package socialMediaApp.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import socialMediaApp.domain.Post;
@@ -17,6 +18,9 @@ public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
     @Autowired
     private UserRepository userRepository;
+
+
+    @Transactional
     @Override
     public Post createPost(Post post, Integer userId) throws UserException {
         Optional<User> userOptional = userRepository.findById(userId);

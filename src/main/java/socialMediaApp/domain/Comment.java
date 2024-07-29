@@ -2,6 +2,8 @@ package socialMediaApp.domain;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "comments")
@@ -20,6 +22,7 @@ public class Comment {
 
     private String content;
     private LocalDateTime createdAt = LocalDateTime.now();
+    private Set<User> likedByUsers = new HashSet<User>();
 
     public Comment() {}
 
@@ -61,5 +64,11 @@ public class Comment {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+    public Set<User> getLikedByUsers() {
+        return likedByUsers;
+    }
+    public void setLikedByUsers(Set<User> likedByUsers) {
+        this.likedByUsers = likedByUsers;
     }
 }
